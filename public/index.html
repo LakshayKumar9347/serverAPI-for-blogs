@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Admin Page</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+	<!-- partial:index.partial.html -->
+	<div class="box-form">
+		<div class="left">
+			<div class="overlay">
+				<h1>Admin Panel.</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Curabitur et est sed felis aliquet sollicitudin</p>
+
+			</div>
+		</div>
+		<div class="right">
+			<h5>Login</h5>
+			<p>Don't have an account? You are Not Authorized
+			<div class="inputs">
+				<form action="http://localhost:5500/login" method="post">
+
+					<input type="text" id="username" placeholder="user name">
+					<br>
+					<input type="password" id="password" placeholder="password">
+
+
+			</div>
+
+			<br><br>
+
+			<div class="remember-me--forget-password">
+				<!-- Angular -->
+				<label>
+					<input type="checkbox" name="item" checked />
+					<span class="text-checkbox">Remember me</span>
+				</label>
+				<p>forget password?</p>
+			</div>
+
+			<br>
+			<button id="login" type="submit" onclick="postData()">Login</button>
+		</div>
+
+		</form>
+		<script>
+			function postData() {
+				// Get form data
+				const username = document.getElementById('username').value
+				const password = document.getElementById('password').value
+				const formData = (username, password)
+				// Send the data using fetch()
+				fetch('http://localhost:5500/login', {
+					method: 'POST',
+					body: formData
+				})
+					.then(response => response.json())
+					.then(data => {
+						// Handle the response
+						console.log(data);
+					})
+					.catch(error => {
+						// Handle errors
+						console.error(error);
+					});
+			}
+		</script>
+
+</body>
+
+</html>
